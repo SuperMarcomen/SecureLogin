@@ -1,0 +1,28 @@
+#Custom GUI
+Captcha:
+  gui-name: "&4&lClick on the CommandBlock"
+  rows: 5
+
+  Item:
+    item-name: "&7[&cClick me&7]"
+    item-material: COMMAND
+    item-data: 0
+    item-amount: 32
+    item-lore:
+      - " &bIf you click me"
+      - " &bi can close the GUI"
+      - " &band you can enjoy the game"
+    item-glow: false
+
+  Decoration:
+    decoration-name: "&7[&dDecoration&7]"
+    decoration-material: STAINED_GLASS_PANE
+    decoration-data: 11
+    decoration-amount: 1
+    decoration-lore:
+      - ""
+      - "&eI don't have a lore"
+      - ""
+      - "&aor maybe not"
+      - ""
+    decoration-glow: true

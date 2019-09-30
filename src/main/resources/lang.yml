@@ -1,0 +1,17 @@
+Messages:
+  enter-password: "&aWelcome, enter your password."
+  player-found: "&aSuccess: &7Player found, I set a personal password."
+  player-not-found: "&cError: &7Player not found."
+  set-personal-password: "&bInfo: &7Set a player personal password."
+  correct-password: "&aSuccess: &7Correct password, enjoy the game."
+  reload-config: "&aSuccess: &7Configurations successfully reloaded."
+  no-permission: "&cError: &7You don't have permission to do this."
+  new-global-password: "&aSuccess: &7You have set a new global password."
+  active-session: "&aActive session, you have been automatically authenticated"
+
+Help-messages:
+  - "&b&m+                                        +"
+  - "&b/securelogin setglobalpassword <password>"
+  - "&b/securelogin setpassword <player> <password>"
+  - "&b/securelogin reload"
+  - "&b&m+                                        +"
