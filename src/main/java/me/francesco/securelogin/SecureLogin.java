@@ -7,9 +7,10 @@ import me.francesco.securelogin.messages.StringListMessages;
 import me.francesco.securelogin.password.PasswordCommand;
 import me.francesco.securelogin.password.PasswordListener;
 import me.francesco.securelogin.password.PasswordManager;
+import me.francesco.securelogin.randomblockgui.GUICommand;
+import me.francesco.securelogin.randomblockgui.GUIListener;
 import me.francesco.securelogin.util.FileManager;
 import me.francesco.securelogin.util.JoinEvent;
-import me.francesco.chooseyourtexture.randomblockgui.GUIListener;
 import me.francesco.securelogin.util.ListManager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -23,7 +24,6 @@ public final class SecureLogin extends JavaPlugin {
     private FileManager config;
     private FileManager captcha;
     private FileManager playerpassword;
-    private String version;
     private ListManager listManager;
     private JoinEvent joinEvent;
     private StringListMessages stringListMessages;
@@ -34,8 +34,8 @@ public final class SecureLogin extends JavaPlugin {
         plugin = this;
         listManager = new ListManager();
         joinEvent = new JoinEvent(this);
-        version = plugin.getVersion();
         stringListMessages = new StringListMessages(this);
+        new GUICommand(this);
         new GUIListener(this);
         new ActionListener(this);
         new PasswordCommand(this);
@@ -68,10 +68,10 @@ public final class SecureLogin extends JavaPlugin {
     public FileConfiguration getLang(){ return this.lang.getConfig(); }
     public FileConfiguration getCaptcha(){ return this.captcha.getConfig(); }
     public FileConfiguration getPlayerPassword(){ return this.playerpassword.getConfig(); }
-    public String getVersion(){ return version; }
 
     public ListManager getListManager(){ return this.listManager; }
     public ColoredMessages getColoredMessages(){ return this.coloredMessages; }
+    public StringListMessages getStringListMessages(){ return this.stringListMessages; }
     public JoinEvent getJoinEvent(){ return this.joinEvent; }
 
     public boolean isAuthmeEnabled(){

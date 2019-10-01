@@ -8,10 +8,17 @@ Messages:
   no-permission: "&cError: &7You don't have permission to do this."
   new-global-password: "&aSuccess: &7You have set a new global password."
   active-session: "&aActive session, you have been automatically authenticated"
+  no-arguments: "&cError: &7You have not entered enough arguments"
+  wrong-rows-number: "&cError: &7You should add a number between 1 and 6"
+  set-rows: "&aSuccess: &7Rows set"
 
 Help-messages:
   - "&b&m+                                        +"
   - "&b/securelogin setglobalpassword <password>"
   - "&b/securelogin setpassword <player> <password>"
   - "&b/securelogin reload"
+  - "&b/randomblockgui setrows"
+  - ""
+  - ""
+  - ""
   - "&b&m+                                        +"

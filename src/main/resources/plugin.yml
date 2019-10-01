@@ -6,5 +6,5 @@ description: A simple secure login with password.
 commands:
   securelogin:
     description: SecureLogin Administrator command
-  captcha:
+  randomblockgui:
     description: SecureLogin Captcha Administrator command

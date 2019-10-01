@@ -49,4 +49,16 @@ public class ColoredMessages {
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.active-session")));
     }
 
+    public void noArgs(CommandSender p){
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-arguments")));
+    }
+
+    public void errorSetRows(CommandSender p){
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.wrong-rows-number")));
+    }
+
+    public void setRows(CommandSender p){
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.set-rows")));
+    }
+
 }
