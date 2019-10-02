@@ -1,11 +1,15 @@
 package me.francesco.securelogin.randomblockgui;
 
 import me.francesco.securelogin.SecureLogin;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -19,8 +23,6 @@ public class GUICommand implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player p = (Player) sender;
-        Material item = p.getItemInHand().getType();
         if (sender.hasPermission("securelogin.command.randomblockgui")) {
             if (args.length > 0) {
                 switch (args[0].toLowerCase()) {
@@ -51,9 +53,21 @@ public class GUICommand implements CommandExecutor {
                         }
                         break;
                     case "setdecoration":
+                        if(!(sender instanceof Player)){
+                            plugin.getColoredMessages().onlyPlayer(sender);
+                            return true;
+                        }
+                        Player p = (Player) sender;
+                        ItemStack is = p.getItemInHand();
+                        plugin.getCaptcha().set("Captcha.Decoration.name", is.getItemMeta().getDisplayName().replaceAll("\\xa7", "&"));
+                        plugin.getCaptcha().set("Captcha.Decoration.material", is.getData().getItemType().toString());
+                        plugin.getCaptcha().set("Captcha.Decoration.data", is.getData().getData());
+                        plugin.getCaptcha().set("Captcha.Decoration.amount", is.getAmount());
+                        plugin.getCaptcha().set("Captcha.Decoration.glow", is.getItemMeta().hasEnchants());
+                        plugin.getStringListMessages().setItemLore();
+                        plugin.getCaptchaYML().saveConfig();
                         break;
                     case "setitem":
-
                         break;
                 }
                 return true;

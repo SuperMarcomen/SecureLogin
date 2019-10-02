@@ -13,52 +13,30 @@ public class ColoredMessages {
         this.plugin = p;
     }
 
-    public void playerFound(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.player-found")));
-    }
+    public void playerFound(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.player-found"))); }
 
-    public void playerNotFound(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.player-not-found")));
-    }
+    public void playerNotFound(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.player-not-found"))); }
 
-    public void setPersonalPassword(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.set-personal-password")));
-    }
+    public void setPersonalPassword(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.set-personal-password"))); }
 
-    public void correctPassword(Player p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.correct-password")));
-    }
+    public void correctPassword(Player p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.correct-password"))); }
 
-    public void enterPassword(Player p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.enter-password")));
-    }
+    public void enterPassword(Player p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.enter-password"))); }
 
-    public void configReload(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.reload-config")));
-    }
+    public void configReload(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.reload-config"))); }
 
-    public void noPerms(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-permission")));
-    }
+    public void noPerms(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-permission"))); }
 
-    public void newGlobalPassword(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.new-global-password")));
-    }
+    public void newGlobalPassword(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.new-global-password"))); }
 
-    public void sessionRestored(Player p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.active-session")));
-    }
+    public void sessionRestored(Player p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.active-session"))); }
 
-    public void noArgs(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-arguments")));
-    }
+    public void noArgs(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-arguments"))); }
 
-    public void errorSetRows(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.wrong-rows-number")));
-    }
+    public void errorSetRows(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.wrong-rows-number"))); }
 
-    public void setRows(CommandSender p){
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.set-rows")));
-    }
+    public void setRows(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.set-rows"))); }
+
+    public void onlyPlayer(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.only-player"))); }
 
 }

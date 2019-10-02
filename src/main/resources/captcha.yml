@@ -4,25 +4,25 @@ Captcha:
   rows: 5
 
   Item:
-    item-name: "&7[&cClick me&7]"
-    item-material: COMMAND
-    item-data: 0
-    item-amount: 32
-    item-lore:
+    name: "&7[&cClick me&7]"
+    material: COMMAND
+    data: 0
+    amount: 32
+    lore:
       - " &bIf you click me"
       - " &bi can close the GUI"
       - " &band you can enjoy the game"
-    item-glow: false
+    glow: false
 
   Decoration:
-    decoration-name: "&7[&dDecoration&7]"
-    decoration-material: STAINED_GLASS_PANE
-    decoration-data: 11
-    decoration-amount: 1
-    decoration-lore:
+    name: "&7[&dDecoration&7]"
+    material: STAINED_GLASS_PANE
+    data: 11
+    amount: 1
+    lore:
       - ""
       - "&eI don't have a lore"
       - ""
       - "&aor maybe not"
       - ""
-    decoration-glow: true
+    glow: true

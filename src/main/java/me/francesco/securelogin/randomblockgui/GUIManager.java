@@ -39,18 +39,16 @@ public class GUIManager {
 
     @NotNull
     private ItemStack createItem(){
-        Material b = Material.getMaterial(plugin.getCaptcha().getString("Captcha.Item.item-material", "STONE"));
+        Material b = Material.getMaterial(plugin.getCaptcha().getString("Captcha.Item.material", "STONE"));
         if(b == null) b = Material.STONE;
-        int blockAmount = plugin.getCaptcha().getInt("Captcha.Item.item-amount", 1);
+        int blockAmount = plugin.getCaptcha().getInt("Captcha.Item.amount", 1);
         int blockData;
-        //if(!(version.contains("13") || version.contains("14"))){
-        blockData = plugin.getCaptcha().getInt("Captcha.Item.item-data", 0);
-        //}
+        blockData = plugin.getCaptcha().getInt("Captcha.Item.data", 0);
         ItemStack block = new ItemStack(b, blockAmount, (short) blockData);
         ItemMeta blockItemMeta = block.getItemMeta();
-        blockItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getCaptcha().getString("Captcha.Item.item-name")));
+        blockItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getCaptcha().getString("Captcha.Item.name")));
         blockItemMeta.setLore(stringListMessages.getBlockLore());
-        if(plugin.getCaptcha().getBoolean("Captcha.Item.item-glow")){
+        if(plugin.getCaptcha().getBoolean("Captcha.Item.glow")){
             blockItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
             blockItemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
@@ -60,17 +58,15 @@ public class GUIManager {
 
     @NotNull
     private ItemStack createDecoration(){
-        Material d = Material.getMaterial(plugin.getCaptcha().getString("Captcha.Decoration.decoration-material", "STONE"));
-        int decorationAmount = plugin.getCaptcha().getInt("Captcha.Decoration.decoration-amount", 1);
+        Material d = Material.getMaterial(plugin.getCaptcha().getString("Captcha.Decoration.material", "STONE"));
+        int decorationAmount = plugin.getCaptcha().getInt("Captcha.Decoration.amount", 1);
         int decorationData = 0;
-        //if(!(version.contains("13") || version.contains("14"))){
-            decorationData = plugin.getCaptcha().getInt("Captcha.Decoration.decoration-data", 0);
-        //}
+        decorationData = plugin.getCaptcha().getInt("Captcha.Decoration.data", 0);
         ItemStack decoration = new ItemStack(d, decorationAmount, (short) decorationData);
         ItemMeta decorationItemMeta = decoration.getItemMeta();
-        decorationItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getCaptcha().getString("Captcha.Decoration.decoration-name")));
+        decorationItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getCaptcha().getString("Captcha.Decoration.name")));
         decorationItemMeta.setLore(stringListMessages.getDecorationLore());
-        if(plugin.getCaptcha().getBoolean("Captcha.Decoration.decoration-glow")){
+        if(plugin.getCaptcha().getBoolean("Captcha.Decoration.glow")){
             decorationItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
             decorationItemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
@@ -85,7 +81,7 @@ public class GUIManager {
         return size;
     }
 
-    public String getTitle(){
+    private String getTitle(){
         return ChatColor.translateAlternateColorCodes('&', plugin.getCaptcha().getString("Captcha.gui-name"));
     }
 }

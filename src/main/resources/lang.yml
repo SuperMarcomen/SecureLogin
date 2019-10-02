@@ -11,6 +11,7 @@ Messages:
   no-arguments: "&cError: &7You have not entered enough arguments"
   wrong-rows-number: "&cError: &7You should add a number between 1 and 6"
   set-rows: "&aSuccess: &7Rows set"
+  only-player: "&cError: &7Only player can execute this command"
 
 Help-messages:
   - "&b&m+                                        +"

@@ -17,7 +17,7 @@ public class StringListMessages {
 
     public List<String> getBlockLore() {
         List<String> list = new ArrayList<>();
-        for (String s : plugin.getCaptcha().getStringList("Captcha.Item.item-lore")) {
+        for (String s : plugin.getCaptcha().getStringList("Captcha.Item.lore")) {
             list.add(ChatColor.translateAlternateColorCodes('&', s));
         }
         return list;
@@ -25,10 +25,19 @@ public class StringListMessages {
 
     public List<String> getDecorationLore() {
         List<String> list = new ArrayList<>();
-        for (String s : plugin.getCaptcha().getStringList("Captcha.Decoration.decoration-lore")) {
+        for (String s : plugin.getCaptcha().getStringList("Captcha.Decoration.lore")) {
             list.add(ChatColor.translateAlternateColorCodes('&', s));
         }
         return list;
+    }
+
+    public void setItemLore(){
+        List<String> list2 = new ArrayList<>();
+        for(String s: plugin.getCaptcha().getStringList("Captcha.Decoration.lore")){
+            list2.add(s.replaceAll("\\xa7", "&"));
+        }
+        plugin.getCaptcha().set("Captcha.Decoration.lore", list2);
+        plugin.getCaptchaYML().saveConfig();
     }
 
     public void getHelpMessage(CommandSender cs) {
