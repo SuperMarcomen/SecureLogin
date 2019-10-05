@@ -23,7 +23,7 @@ public class GUIListener implements Listener {
     public void onInventoryClickEvent(InventoryClickEvent e){
         Player p = (Player) e.getWhoClicked();
         if(e.getClickedInventory() == null) return;
-        if(!e.getClickedInventory().getName().equals(guiManager.getTitle())) return;
+        if(!e.getView().getTitle().equals(guiManager.getTitle())) return;
         e.setCancelled(true);
         if(e.getSlot() == plugin.getListManager().getCaptchaSlot().get(p)){
             plugin.getListManager().getCaptchaSlot().remove(p);

@@ -1,6 +1,5 @@
 package me.francesco.securelogin.randomblockgui;
 
-import com.avaje.ebean.validation.NotNull;
 import me.francesco.securelogin.SecureLogin;
 import me.francesco.securelogin.messages.StringListMessages;
 import org.bukkit.Bukkit;
@@ -37,7 +36,6 @@ public class GUIManager {
         return inv;
     }
 
-    @NotNull
     private ItemStack createItem(){
         Material b = Material.getMaterial(plugin.getCaptcha().getString("Captcha.Item.material", "STONE"));
         if(b == null) b = Material.STONE;
@@ -56,7 +54,6 @@ public class GUIManager {
         return block;
     }
 
-    @NotNull
     private ItemStack createDecoration(){
         Material d = Material.getMaterial(plugin.getCaptcha().getString("Captcha.Decoration.material", "STONE"));
         int decorationAmount = plugin.getCaptcha().getInt("Captcha.Decoration.amount", 1);

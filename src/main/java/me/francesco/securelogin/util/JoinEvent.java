@@ -1,6 +1,5 @@
 package me.francesco.securelogin.util;
 
-import com.avaje.ebean.validation.NotNull;
 import me.francesco.securelogin.SecureLogin;
 import me.francesco.securelogin.randomblockgui.GUIManager;
 import org.bukkit.ChatColor;
@@ -16,7 +15,6 @@ public class JoinEvent {
         guiManager = new GUIManager(plugin);
     }
 
-    @NotNull
     public void join(Player p){
         if(!p.hasPermission("securelogin.securelogin")) return;
         if(plugin.isSessionEnable()){
