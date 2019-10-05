@@ -39,6 +39,14 @@ public class ColoredMessages {
 
     public void onlyPlayer(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.only-player"))); }
 
+    public void cantBreak(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.cannot-break"))); }
+
+    public void cantPlace(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.cannot-place"))); }
+
+    public void noCommand(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-command"))); }
+
+    public void titleSet(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.title-set"))); }
+
     private String hasGlow(){ return ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.has-glow")); }
 
     private String hasNotGlow(){ return ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.has-not-glow")); }

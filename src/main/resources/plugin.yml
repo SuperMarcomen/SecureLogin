@@ -3,6 +3,7 @@ version: 3.1.0
 main: me.francesco.securelogin.SecureLogin
 authors: [Pompiere1]
 description: A simple secure login with password.
+softdepend: [AuthMe]
 commands:
   securelogin:
     description: SecureLogin Administrator command

@@ -37,7 +37,8 @@ public class ActionListener implements Listener {
     @EventHandler
     public void onBlockBreakEvent(BlockBreakEvent e){
         Player p = e.getPlayer();
-        if(plugin.getListManager().getAllList(p))
+        if(!plugin.getListManager().getAllList(p)) return;
+        plugin.getColoredMessages().cantBreak(p);
         e.setCancelled(true);
     }
 
@@ -45,6 +46,7 @@ public class ActionListener implements Listener {
     public void onBlockPlaceEvent(BlockPlaceEvent e){
         Player p = e.getPlayer();
         if(!plugin.getListManager().getAllList(p)) return;
+        plugin.getColoredMessages().cantPlace(p);
         e.setCancelled(true);
     }
 
@@ -88,6 +90,7 @@ public class ActionListener implements Listener {
     public void onPlayerPreprocessCommandEvent(PlayerCommandPreprocessEvent e){
         Player p = e.getPlayer();
         if(!plugin.getListManager().getAllList(p)) return;
+        plugin.getColoredMessages().noCommand(p);
         e.setCancelled(true);
     }
 }

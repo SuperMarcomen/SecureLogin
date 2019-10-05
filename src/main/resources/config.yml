@@ -1,7 +1,7 @@
 #You can change password here or from console with the command /securelogin setglobalpassword <password>
-Password: "ciao1234"
+Password: "Hello1234"
 Wrong-password-execute-commands:
-  - "say ciao"
+  - "say hello"
   - "say %player has wrong the password"
   - "msg %player You've wrong the password"
 Active-captcha: true
