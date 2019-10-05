@@ -39,4 +39,25 @@ public class ColoredMessages {
 
     public void onlyPlayer(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.only-player"))); }
 
+    private String hasGlow(){ return ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.has-glow")); }
+
+    private String hasNotGlow(){ return ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.has-not-glow")); }
+
+    public void itemSet(CommandSender p){
+        String s = ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.item-set"))
+                .replaceAll("%item", plugin.getCaptcha().getString("Captcha.Item.material"))
+                .replaceAll("%data", plugin.getCaptcha().getString("Captcha.Item.data"))
+                .replaceAll("%amount", plugin.getCaptcha().getString("Captcha.Item.amount"))
+                .replaceAll("%hasGlow", plugin.getCaptcha().getBoolean("Captcha.Item.glow") ? plugin.getColoredMessages().hasGlow() : plugin.getColoredMessages().hasNotGlow() );
+        p.sendMessage(s);
+    }
+
+    public void decorationSet(CommandSender p){
+        String s = ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.item-set"))
+                .replaceAll("%item", plugin.getCaptcha().getString("Captcha.Decoration.material"))
+                .replaceAll("%data", plugin.getCaptcha().getString("Captcha.Decoration.data"))
+                .replaceAll("%amount", plugin.getCaptcha().getString("Captcha.Decoration.amount"))
+                .replaceAll("%hasGlow", plugin.getCaptcha().getBoolean("Captcha.Decoration.glow") ? plugin.getColoredMessages().hasGlow() : plugin.getColoredMessages().hasNotGlow() );
+        p.sendMessage(s);
+    }
 }

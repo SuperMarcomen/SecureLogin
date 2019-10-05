@@ -60,7 +60,7 @@ public class GUIManager {
     private ItemStack createDecoration(){
         Material d = Material.getMaterial(plugin.getCaptcha().getString("Captcha.Decoration.material", "STONE"));
         int decorationAmount = plugin.getCaptcha().getInt("Captcha.Decoration.amount", 1);
-        int decorationData = 0;
+        int decorationData;
         decorationData = plugin.getCaptcha().getInt("Captcha.Decoration.data", 0);
         ItemStack decoration = new ItemStack(d, decorationAmount, (short) decorationData);
         ItemMeta decorationItemMeta = decoration.getItemMeta();
@@ -81,7 +81,7 @@ public class GUIManager {
         return size;
     }
 
-    private String getTitle(){
+    public String getTitle(){
         return ChatColor.translateAlternateColorCodes('&', plugin.getCaptcha().getString("Captcha.gui-name"));
     }
 }

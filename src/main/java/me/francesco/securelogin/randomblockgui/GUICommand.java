@@ -6,12 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public class GUICommand implements CommandExecutor {
 
@@ -59,16 +55,35 @@ public class GUICommand implements CommandExecutor {
                         }
                         Player p = (Player) sender;
                         ItemStack is = p.getItemInHand();
-                        plugin.getCaptcha().set("Captcha.Decoration.name", is.getItemMeta().getDisplayName().replaceAll("\\xa7", "&"));
+                        if(is.getItemMeta().getDisplayName() != null) plugin.getCaptcha().set("Captcha.Decoration.name", is.getItemMeta().getDisplayName().replaceAll("\\xa7", "&"));
+                        else plugin.getCaptcha().set("Captcha.Decoration.name", "");
                         plugin.getCaptcha().set("Captcha.Decoration.material", is.getData().getItemType().toString());
                         plugin.getCaptcha().set("Captcha.Decoration.data", is.getData().getData());
                         plugin.getCaptcha().set("Captcha.Decoration.amount", is.getAmount());
                         plugin.getCaptcha().set("Captcha.Decoration.glow", is.getItemMeta().hasEnchants());
                         plugin.getStringListMessages().setItemLore();
+                        plugin.getColoredMessages().decorationSet(p);
                         plugin.getCaptchaYML().saveConfig();
                         break;
                     case "setitem":
+                        if(!(sender instanceof Player)){
+                            plugin.getColoredMessages().onlyPlayer(sender);
+                            return true;
+                        }
+                        p = (Player) sender;
+                        is = p.getItemInHand();
+                        if(is.getItemMeta().getDisplayName() != null) plugin.getCaptcha().set("Captcha.Item.name", is.getItemMeta().getDisplayName().replaceAll("\\xa7", "&"));
+                        else plugin.getCaptcha().set("Captcha.Item.name", "");
+                        plugin.getCaptcha().set("Captcha.Item.material", is.getData().getItemType().toString());
+                        plugin.getCaptcha().set("Captcha.Item.data", is.getData().getData());
+                        plugin.getCaptcha().set("Captcha.Item.amount", is.getAmount());
+                        plugin.getCaptcha().set("Captcha.Item.glow", is.getItemMeta().hasEnchants());
+                        plugin.getStringListMessages().setItemLore();
+                        plugin.getColoredMessages().itemSet(p);
+                        plugin.getCaptchaYML().saveConfig();
                         break;
+                    default:
+                        plugin.getStringListMessages().getHelpMessage(sender);
                 }
                 return true;
             }

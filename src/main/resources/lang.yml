@@ -12,6 +12,9 @@ Messages:
   wrong-rows-number: "&cError: &7You should add a number between 1 and 6"
   set-rows: "&aSuccess: &7Rows set"
   only-player: "&cError: &7Only player can execute this command"
+  item-set: "&aSuccess: &7You've set %amount %item:%data %hasGlow"
+  has-glow: "with glow"
+  has-not-glow: "without glow"
 
 Help-messages:
   - "&b&m+                                        +"
