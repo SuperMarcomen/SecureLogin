@@ -10,7 +10,7 @@ import me.francesco.securelogin.password.PasswordManager;
 import me.francesco.securelogin.randomblockgui.GUICommand;
 import me.francesco.securelogin.randomblockgui.GUIListener;
 import me.francesco.securelogin.util.FileManager;
-import me.francesco.securelogin.util.JoinEvent;
+import me.francesco.securelogin.util.ProtectionManager;
 import me.francesco.securelogin.util.ListManager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,7 +25,7 @@ public final class SecureLogin extends JavaPlugin {
     private FileManager captcha;
     private FileManager playerpassword;
     private ListManager listManager;
-    private JoinEvent joinEvent;
+    private ProtectionManager joinEvent;
     private StringListMessages stringListMessages;
     private ColoredMessages coloredMessages;
 
@@ -33,7 +33,7 @@ public final class SecureLogin extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         listManager = new ListManager();
-        joinEvent = new JoinEvent(this);
+        joinEvent = new ProtectionManager(this);
         stringListMessages = new StringListMessages(this);
         new GUICommand(this);
         new GUIListener(this);
@@ -72,7 +72,7 @@ public final class SecureLogin extends JavaPlugin {
     public ListManager getListManager(){ return this.listManager; }
     public ColoredMessages getColoredMessages(){ return this.coloredMessages; }
     public StringListMessages getStringListMessages(){ return this.stringListMessages; }
-    public JoinEvent getJoinEvent(){ return this.joinEvent; }
+    public ProtectionManager getJoinEvent(){ return this.joinEvent; }
 
     public boolean isAuthmeEnabled(){
         try{
@@ -82,7 +82,8 @@ public final class SecureLogin extends JavaPlugin {
             return false;
         }
     }
-    public boolean isPasswordEnable(){ return getConfig().getBoolean("Active-password"); }
-    public boolean isCaptchaEnable(){ return getConfig().getBoolean("Active-captcha"); }
-    public boolean isSessionEnable(){ return getConfig().getBoolean("Active-session"); }
+    public boolean isPasswordEnable(){ return getConfig().getBoolean("Enable-password-protection"); }
+    public boolean isCaptchaEnable(){ return getConfig().getBoolean("Enable-captcha-protection"); }
+    public boolean isSessionEnable(){ return getConfig().getBoolean("Enable-session"); }
+    public boolean isCommandBlockCommandEnable(){ return getConfig().getBoolean("Enable-command-from-commandblock"); }
 }

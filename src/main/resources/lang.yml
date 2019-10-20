@@ -19,6 +19,7 @@ Messages:
   item-set: "&aSuccess: &7You've set %amount %item:%data %hasGlow"
   has-glow: "with glow"
   has-not-glow: "without glow"
+  no-command-block: "&cError: &7You can't use this command on this commandblock"
 
 Help-messages:
   - "&b&m+                                        +"

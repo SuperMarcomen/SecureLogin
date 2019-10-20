@@ -4,6 +4,12 @@ Wrong-password-execute-commands:
   - "say hello"
   - "say %player has wrong the password"
   - "msg %player You've wrong the password"
-Active-captcha: true
-Active-password: true
-Active-session: true
+Enable-captcha-protection: true
+Enable-password-protection: true
+Enable-session: true
+#if you set it to true the server
+whitelist-world: true
+worlds:
+  - "this_world"
+  - "another_world"
+  - "im_sad"

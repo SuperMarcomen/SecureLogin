@@ -1,6 +1,7 @@
 package me.francesco.securelogin.randomblockgui;
 
 import me.francesco.securelogin.SecureLogin;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -44,6 +45,7 @@ public class GUICommand implements CommandExecutor {
                             sb.deleteCharAt(sb.length() - 1);
                             plugin.getCaptcha().set("Captcha.gui-name", sb.toString());
                             plugin.getCaptchaYML().saveConfig();
+                            plugin.getColoredMessages().titleSet(sender);
                         }
                         break;
                     case "setdecoration":
@@ -53,6 +55,7 @@ public class GUICommand implements CommandExecutor {
                         }
                         Player p = (Player) sender;
                         ItemStack is = p.getItemInHand();
+                        if(is.getData().getItemType().toString().contains("AIR")) return true;
                         if(is.getItemMeta().getDisplayName() != null) plugin.getCaptcha().set("Captcha.Decoration.name", is.getItemMeta().getDisplayName().replaceAll("\\xa7", "&"));
                         else plugin.getCaptcha().set("Captcha.Decoration.name", "");
                         plugin.getCaptcha().set("Captcha.Decoration.material", is.getData().getItemType().toString());
@@ -70,6 +73,7 @@ public class GUICommand implements CommandExecutor {
                         }
                         p = (Player) sender;
                         is = p.getItemInHand();
+                        if(is.getData().getItemType().toString().contains("AIR")) return true;
                         if(is.getItemMeta().getDisplayName() != null) plugin.getCaptcha().set("Captcha.Item.name", is.getItemMeta().getDisplayName().replaceAll("\\xa7", "&"));
                         else plugin.getCaptcha().set("Captcha.Item.name", "");
                         plugin.getCaptcha().set("Captcha.Item.material", is.getData().getItemType().toString());

@@ -93,4 +93,16 @@ public class ActionListener implements Listener {
         plugin.getColoredMessages().noCommand(p);
         e.setCancelled(true);
     }
+
+    @EventHandler
+    public void onPlayerChangeWorldEvent(PlayerChangedWorldEvent e){
+        Player p = e.getPlayer();
+        String world = p.getWorld().toString();
+        for(String s : plugin.getConfig().getStringList("worlds")){
+            if(world.equals(s)){
+                plugin.getJoinEvent().join(p);
+                return;
+            }
+        }
+    }
 }

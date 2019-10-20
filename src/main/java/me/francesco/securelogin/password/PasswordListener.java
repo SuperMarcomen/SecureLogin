@@ -1,10 +1,14 @@
 package me.francesco.securelogin.password;
 
 import me.francesco.securelogin.SecureLogin;
+import org.bukkit.ChatColor;
+import org.bukkit.command.BlockCommandSender;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.server.ServerCommandEvent;
 
 public class PasswordListener implements Listener {
 
@@ -42,4 +46,15 @@ public class PasswordListener implements Listener {
             }
         }
     }
+/*
+    @EventHandler
+    public void onCommandBlockCommand(ServerCommandEvent e){
+        CommandSender cs = e.getSender();
+        if(cs instanceof BlockCommandSender && !plugin.isCommandBlockCommandEnable()){
+            if(e.getCommand().toLowerCase().contains("securelogin") || e.getCommand().toLowerCase().contains("randomblockgui")){
+                plugin.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-command-block")));
+                e.setCancelled(true);
+            }
+        }
+    }*/
 }

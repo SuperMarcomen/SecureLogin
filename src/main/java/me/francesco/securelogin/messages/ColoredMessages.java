@@ -47,6 +47,8 @@ public class ColoredMessages {
 
     public void titleSet(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.title-set"))); }
 
+    public void noCommandBlock(CommandSender p){ p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-command-block"))); }
+
     private String hasGlow(){ return ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.has-glow")); }
 
     private String hasNotGlow(){ return ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.has-not-glow")); }

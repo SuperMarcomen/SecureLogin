@@ -5,12 +5,12 @@ import me.francesco.securelogin.randomblockgui.GUIManager;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-public class JoinEvent {
+public class ProtectionManager {
 
     private SecureLogin plugin;
     private GUIManager guiManager;
 
-    public JoinEvent(SecureLogin p){
+    public ProtectionManager(SecureLogin p){
         this.plugin = p;
         guiManager = new GUIManager(plugin);
     }
