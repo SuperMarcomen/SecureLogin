@@ -7,8 +7,7 @@ Wrong-password-execute-commands:
 Enable-captcha-protection: true
 Enable-password-protection: true
 Enable-session: true
-#if you set it to true the server
-whitelist-world: true
+#Worlds where the server will initiate player protection procedures
 worlds:
   - "this_world"
   - "another_world"
