@@ -36,6 +36,7 @@ public class FileManager {
         if (!dataFolder.exists()) {
             dataFolder.mkdir();
         }
+
         File file = new File(dataFolder, configName);
         if (!file.exists()) {
             try {

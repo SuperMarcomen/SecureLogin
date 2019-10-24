@@ -20,30 +20,35 @@ public class GUIListener implements Listener {
     }
 
     @EventHandler
-    public void onInventoryClickEvent(InventoryClickEvent e){
-        Player p = (Player) e.getWhoClicked();
-        if(e.getClickedInventory() == null) return;
-        if(!e.getView().getTitle().equals(guiManager.getTitle())) return;
-        e.setCancelled(true);
-        if(e.getSlot() == plugin.getListManager().getCaptchaSlot().get(p)){
-            plugin.getListManager().getCaptchaSlot().remove(p);
-            plugin.getListManager().getPlayerSession().put(p.getName(), p.getAddress().getHostString());
-            p.closeInventory();
-            if(p.hasPermission("securelogin.password.on") && plugin.isPasswordEnable()){
-                plugin.getListManager().getPasswordPlayer().add(p);
-                plugin.getColoredMessages().enterPassword(p);
-            }
+    public void onInventoryClickEvent(InventoryClickEvent event){
+        Player player = (Player) event.getWhoClicked();
+
+        if(event.getClickedInventory() == null) return;
+        if(!event.getView().getTitle().equals(guiManager.getTitle())) return;
+
+        event.setCancelled(true);
+
+        if(event.getSlot() != plugin.getListManager().getCaptchaSlot().get(player)) return;
+
+        plugin.getListManager().getCaptchaSlot().remove(player);
+        plugin.getListManager().getPlayerSession().put(player.getName(), player.getAddress().getHostString());
+        player.closeInventory();
+
+        if(player.hasPermission("securelogin.password.on") && plugin.isPasswordEnable()){
+            plugin.getListManager().getPasswordPlayer().add(player);
+            plugin.getColoredMessages().enterPassword(player);
         }
+
     }
 
     @EventHandler
-    public void onInventoryCloseEvent(InventoryCloseEvent e){
-        Player p = (Player) e.getPlayer();
-        if(plugin.getListManager().getCaptchaSlot().containsKey(p)){
+    public void onInventoryCloseEvent(InventoryCloseEvent event){
+        Player player = (Player) event.getPlayer();
+        if(plugin.getListManager().getCaptchaSlot().containsKey(player)){
             new BukkitRunnable(){
                 @Override
                 public void run(){
-                    p.openInventory(guiManager.createInventory(p));
+                    player.openInventory(guiManager.createInventory(player));
                 }
             }.runTaskLater(plugin, 5L);
         }

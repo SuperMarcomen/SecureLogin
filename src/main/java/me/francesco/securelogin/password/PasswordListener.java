@@ -15,46 +15,38 @@ public class PasswordListener implements Listener {
     private SecureLogin plugin;
     private PasswordManager passwordManager;
 
-    public PasswordListener(SecureLogin p) {
-        this.plugin = p;
+    public PasswordListener(SecureLogin plugin) {
+        this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
         passwordManager = new PasswordManager(plugin);
     }
 
     @EventHandler
-    public void onPlayerChatEvent(AsyncPlayerChatEvent e) {
-        Player p = e.getPlayer();
-        if (plugin.getListManager().getAllList(p)) {
-            e.setCancelled(true);
-            String message = e.getMessage();
-            if(plugin.getPlayerPassword().contains(p.getName())){
-                if (message.equals(plugin.getPlayerPassword().getString(p.getName()))) {
-                    plugin.getListManager().getPasswordPlayer().remove(p);
-                    plugin.getColoredMessages().correctPassword(p);
-                    plugin.getListManager().getPlayerSession().put(p.getName(), p.getAddress().getHostString());
-                } else {
-                    passwordManager.punishmentsCommand(p);
-                }
-            }else{
-                if (message.equals(plugin.getConfig().getString("Password"))) {
-                    plugin.getListManager().getPasswordPlayer().remove(p);
-                    plugin.getColoredMessages().correctPassword(p);
-                    plugin.getListManager().getPlayerSession().put(p.getName(), p.getAddress().getHostString());
-                } else {
-                    passwordManager.punishmentsCommand(p);
-                }
+    public void onPlayerChatEvent(AsyncPlayerChatEvent event) {
+        Player player = event.getPlayer();
+
+        if (!plugin.getListManager().getAllList(player)) return;
+        event.setCancelled(true);
+        String message = event.getMessage();
+
+        if (plugin.getPlayerPassword().contains(player.getName())) {
+            if (message.equals(plugin.getPlayerPassword().getString(player.getName()))) {
+                plugin.getListManager().getPasswordPlayer().remove(player);
+                plugin.getColoredMessages().correctPassword(player);
+                plugin.getListManager().getPlayerSession().put(player.getName(), player.getAddress().getHostString());
+            } else {
+                passwordManager.punishmentsCommand(player);
+            }
+        } else {
+            if (message.equals(plugin.getConfig().getString("Password"))) {
+                plugin.getListManager().getPasswordPlayer().remove(player);
+                plugin.getColoredMessages().correctPassword(player);
+                plugin.getListManager().getPlayerSession().put(player.getName(), player.getAddress().getHostString());
+            } else {
+                passwordManager.punishmentsCommand(player);
             }
         }
+
     }
-/*
-    @EventHandler
-    public void onCommandBlockCommand(ServerCommandEvent e){
-        CommandSender cs = e.getSender();
-        if(cs instanceof BlockCommandSender && !plugin.isCommandBlockCommandEnable()){
-            if(e.getCommand().toLowerCase().contains("securelogin") || e.getCommand().toLowerCase().contains("randomblockgui")){
-                plugin.getServer().getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getLang().getString("Messages.no-command-block")));
-                e.setCancelled(true);
-            }
-        }
-    }*/
+
 }

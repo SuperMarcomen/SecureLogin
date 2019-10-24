@@ -26,30 +26,37 @@ public class GUIManager {
 
     public Inventory createInventory(Player p){
         Inventory inv = Bukkit.createInventory(null, getSize(), getTitle());
+
         for(int i = 0; i < inv.getSize(); i++){
             inv.setItem(i, createDecoration());
         }
+
         Random random = new Random();
         int slot = random.nextInt(inv.getSize());
         plugin.getListManager().getCaptchaSlot().put(p, slot);
         inv.setItem(slot, createItem());
+
         return inv;
     }
 
     private ItemStack createItem(){
         Material b = Material.getMaterial(plugin.getCaptcha().getString("Captcha.Item.material", "STONE"));
         if(b == null) b = Material.STONE;
+
         int blockAmount = plugin.getCaptcha().getInt("Captcha.Item.amount", 1);
         int blockData;
         blockData = plugin.getCaptcha().getInt("Captcha.Item.data", 0);
+
         ItemStack block = new ItemStack(b, blockAmount, (short) blockData);
         ItemMeta blockItemMeta = block.getItemMeta();
         blockItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getCaptcha().getString("Captcha.Item.name")));
         blockItemMeta.setLore(stringListMessages.getBlockLore());
+
         if(plugin.getCaptcha().getBoolean("Captcha.Item.glow")){
             blockItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
             blockItemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
+
         block.setItemMeta(blockItemMeta);
         return block;
     }
@@ -59,14 +66,17 @@ public class GUIManager {
         int decorationAmount = plugin.getCaptcha().getInt("Captcha.Decoration.amount", 1);
         int decorationData;
         decorationData = plugin.getCaptcha().getInt("Captcha.Decoration.data", 0);
+
         ItemStack decoration = new ItemStack(d, decorationAmount, (short) decorationData);
         ItemMeta decorationItemMeta = decoration.getItemMeta();
         decorationItemMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getCaptcha().getString("Captcha.Decoration.name")));
         decorationItemMeta.setLore(stringListMessages.getDecorationLore());
+
         if(plugin.getCaptcha().getBoolean("Captcha.Decoration.glow")){
             decorationItemMeta.addEnchant(Enchantment.DURABILITY, 1, true);
             decorationItemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
+
         decoration.setItemMeta(decorationItemMeta);
         return decoration;
     }

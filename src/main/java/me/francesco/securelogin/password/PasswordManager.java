@@ -8,8 +8,8 @@ public class PasswordManager {
 
     private SecureLogin plugin;
 
-    public PasswordManager(SecureLogin p){
-        this.plugin = p;
+    public PasswordManager(SecureLogin plugin){
+        this.plugin = plugin;
     }
 
     public void punishmentsCommand(Player p){
